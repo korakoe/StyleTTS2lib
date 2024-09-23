@@ -178,11 +178,11 @@ class StyleTTS2(
     def load_model_v2(self,LIBRI_TTS_CONFIG,ASR_config,plbert_config):
         self.config  = LIBRI_TTS_CONFIG
         # saving them in self for easier access later when updating the weights
-        self.text_aligner = models.load_ASR_models_v2(ASR_config)
-        self.pitch_extractor = models.load_F0_models_v2() 
-        self.plbert = load_plbert_v2(plbert_config=plbert_config)
-        self.model_params = utils.recursive_munch(self.config['model_params'])
-        model = models.build_model(self.model_params, self.text_aligner, self.pitch_extractor, self.plbert)
+        text_aligner = models.load_ASR_models_v2(ASR_config)
+        pitch_extractor = models.load_F0_models_v2() 
+        plbert = load_plbert_v2(plbert_config=plbert_config)
+        model_params = utils.recursive_munch(self.config['model_params'])
+        model = models.build_model(model_params, text_aligner, pitch_extractor, plbert)
         _ = [model[key].eval() for key in model]
         _ = [model[key].to(self.device) for key in model]
         return model
