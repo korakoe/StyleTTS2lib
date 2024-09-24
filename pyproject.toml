@@ -23,7 +23,7 @@ matplotlib = "^3.7.0"
 accelerate = "^0.25.0"
 langchain = "^0.1.0"
 
-huggingface-hub = "^0.8.1"
+huggingface-hub = ">0.8.1"
 transformers = "^4.36.0"
 cached-path = "^1.5.1"
 filelock = "^3.12.4, <3.13"
