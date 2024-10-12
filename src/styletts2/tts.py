@@ -152,7 +152,7 @@ class StyleTTS2(
         _ = [model[key].eval() for key in model]
         _ = [model[key].to(self.device) for key in model]
 
-        params_whole = torch.load(model_path, map_location='cpu')
+        params_whole = torch.load(model_path, map_location=self.device)
         params = params_whole['net']
 
         for key in model:
