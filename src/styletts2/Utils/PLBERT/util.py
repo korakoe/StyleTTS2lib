@@ -50,3 +50,9 @@ def load_plbert(log_dir, config_path=None, checkpoint_path=None):
     bert.load_state_dict(new_state_dict, strict=False)
     
     return bert
+
+def load_plbert_v2(plbert_config):
+    albert_base_configuration = AlbertConfig(**plbert_config['model_params'])
+    bert = CustomAlbert(albert_base_configuration)
+    return bert
+    
